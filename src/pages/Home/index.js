@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import Resume from "../../components/Resume";
 import Form from "../../components/Form"
 
-const Home = () => {
+export const Home = () => {
     const data = localStorage.getItem("transactions");
     const [transactionsList, setTransactionsList] = useState(
       data ? JSON.parse(data) : []
@@ -52,5 +52,3 @@ const Home = () => {
         </>
     );
 };
-
-export default Home;
