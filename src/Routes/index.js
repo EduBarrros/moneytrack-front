@@ -10,7 +10,7 @@ export const MainRoutes = () => {
        <Routes>
            <Route path='/' exact element={<Login/>} />
            <Route path='/Home' element={<Home/>} />
-           <Route path='/Create' element={<CreateUser/>} />
+           <Route path='/CreateUser' element={<CreateUser/>} />
        </Routes>
    )
 }   

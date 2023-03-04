@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import CreateCard from "../../components/CreateUserCard";
+import React from "react";
+import CreateUserCard from "../../components/CreateUserCard";
 import GlobalStyle from "../../styles/global";
 
 export const CreateUser = () => {  
     return (
         <>
-            <CreateCard/>
+            <CreateUserCard/>
             <GlobalStyle/>
         </>
     );

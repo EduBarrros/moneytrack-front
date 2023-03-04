@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Input from "../Input";
 import * as C from "./styles";
 
-const LoginCard = () => {
+const CreateUserCard = () => {
     return (
         <C.Container>
             <C.Card>
@@ -10,16 +11,22 @@ const LoginCard = () => {
                     <C.Title>MoneyTrack</C.Title>
                 </C.Header>
                 <C.Form>
-                    <Input campo={"Login"} />
+                    <Input campo={"Nome"} />
+                    <Input campo={"Email"} />
                     <Input campo={"Senha"} />
-                    <Input campo={"Senha"} />
-                    <Input campo={"Senha"} />
-                    <C.Link>Cadastre-se</C.Link>
+                    <C.Redirect>
+                        <p>Ja possui Conta?</p>
+                        <Link to="/">
+                            <C.LinkRedirect>
+                                Entrar
+                            </C.LinkRedirect>
+                        </Link>
+                    </C.Redirect>
                 </C.Form>
-                <C.Button>Entrar</C.Button>
+                <C.Button>Cadastrar</C.Button>
             </C.Card>
         </C.Container>
     )
 }
 
-export default LoginCard
+export default CreateUserCard

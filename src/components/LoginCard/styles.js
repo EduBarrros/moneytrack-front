@@ -48,8 +48,17 @@ export const Button = styled.button`
     margin-top: 2em;
 `;
 
-export const Link = styled.p`
-    color: #00B37E;
+export const Redirect = styled.div`
+    display: flex;
+    color: white;
     margin-top: 1em;
-`
+    font-size: 14px;
+`;
+
+
+export const LinkRedirect = styled.p`
+    margin-left: 3px;
+    color: #00B37E;
+`;
+
 

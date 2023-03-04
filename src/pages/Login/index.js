@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import LoginCard from "../../components/LoginCard";
 import GlobalStyle from "../../styles/global";
 
