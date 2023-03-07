@@ -1,5 +1,6 @@
 import React from "react";
 import ResumeItem from "../ResumeItem";
+import ResumeItemGreen from "../ResumeItemGreen";
 import * as C from "./styles";
 import {
     FaRegArrowAltCircleUp,
@@ -22,7 +23,7 @@ const Resume = ({ income, expense, total }) => {
           value={expense}
           iconColor={"#F75A68"}
         />
-        <ResumeItem 
+        <ResumeItemGreen
           title="Total" 
           Icon={FaDollarSign} 
           value={total} 

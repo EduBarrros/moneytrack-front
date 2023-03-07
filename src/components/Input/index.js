@@ -1,11 +1,11 @@
 import React from "react";
 import * as C from "./styles";
 
-const Input = ({campo}) => {
+const Input = ({title, type, value}) => {
     return (
             <C.InputContent>
                 <C.Label>
-                    {campo}
+                    {title}
                 </C.Label>
                 <C.Input />
             </C.InputContent>

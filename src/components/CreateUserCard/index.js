@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Input from "../Input";
 import * as C from "./styles";
 
 const CreateUserCard = () => {
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
     return (
         <C.Container>
             <C.Card>
@@ -11,9 +16,24 @@ const CreateUserCard = () => {
                     <C.Title>MoneyTrack</C.Title>
                 </C.Header>
                 <C.Form>
-                    <Input campo={"Nome"} />
-                    <Input campo={"Email"} />
-                    <Input campo={"Senha"} />
+                    <Input
+                        title={"Nome"}
+                        type={"text"}
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                    <Input
+                        title={"Email"}
+                        type={"email"}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <Input
+                        title={"Senha"}
+                        type={"password"}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
                     <C.Redirect>
                         <p>Ja possui Conta?</p>
                         <Link to="/">
@@ -22,8 +42,8 @@ const CreateUserCard = () => {
                             </C.LinkRedirect>
                         </Link>
                     </C.Redirect>
+                    <C.Button>Cadastrar</C.Button>
                 </C.Form>
-                <C.Button>Cadastrar</C.Button>
             </C.Card>
         </C.Container>
     )

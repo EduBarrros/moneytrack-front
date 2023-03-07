@@ -32,7 +32,11 @@ export const Title = styled.div`
     color: #00B37E;
 `;
 
-export const Form = styled.div`
+export const Form = styled.form`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 `;
 
 export const Button = styled.button`
@@ -53,6 +57,7 @@ export const Link = styled.p`
     margin-top: 1em;
 `
 export const Redirect = styled.div`
+    width: 323px;
     display: flex;
     color: white;
     margin-top: 1em;
