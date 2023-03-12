@@ -8,6 +8,7 @@ export const InputContent = styled.div`
 
 export const Label = styled.label`
     color: #E1E1E6;
+    margin-bottom: 0.3em;
 `;
 
 export const Input = styled.input`

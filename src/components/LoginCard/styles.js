@@ -32,7 +32,7 @@ export const Title = styled.div`
     color: #00B37E;
 `;
 
-export const Form = styled.form`
+export const Form = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;

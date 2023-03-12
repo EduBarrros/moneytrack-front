@@ -48,7 +48,7 @@ export const Button = styled.button`
     cursor: pointer;
     color: white;
     background-color: #00B37E;
-    margin-bottom: 1em;
+    margin-bottom: 2em;
     margin-top: 2em;
 `;
 

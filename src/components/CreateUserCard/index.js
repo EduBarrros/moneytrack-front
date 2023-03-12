@@ -19,18 +19,21 @@ const CreateUserCard = () => {
                     <Input
                         title={"Nome"}
                         type={"text"}
+                        placeHolder={'Digite seu nome'}
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
                     <Input
                         title={"Email"}
                         type={"email"}
+                        placeHolder={'Digite seu email'}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
                     <Input
                         title={"Senha"}
                         type={"password"}
+                        placeHolder={'Digite sua senha'}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
