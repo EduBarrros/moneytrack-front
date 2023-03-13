@@ -1,7 +1,7 @@
 import React from "react";
 import * as C from "./styles";
 
-const Input = ({title, type, value, placeHolder}) => {
+const Input = ({title, type = 'text', value, placeHolder, onChange}) => {
     return (
             <C.InputContent>
                 <C.Label>
@@ -9,6 +9,8 @@ const Input = ({title, type, value, placeHolder}) => {
                 </C.Label>
                 <C.Input 
                     placeholder={placeHolder}
+                    onChange={onChange}
+                    type={type}
                 />
             </C.InputContent>
     );

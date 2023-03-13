@@ -1,19 +1,34 @@
 import Input from "../Input";
 import * as C from "./styles";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { LoginService } from '../../services/login'
+import { Link, useNavigate} from "react-router-dom";
+import { useStore } from "../../store/auth";
+import React, { useEffect, useState } from "react";
+import { LoginService } from '../../services/login';
+
 
 const LoginCard = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("")
+    const { isAuthenticated, setIsAuthenticated } = useStore();
+    const navigate = useNavigate();
 
     const LoginHandler = async () => {
-        const LoginResponse = await LoginService({ email: 'selmadias@gmail.com', password: 'teste1234' })
+        const res = await LoginService({ email: email, password: password })
 
-        console.log('Teste login', LoginResponse)
+        console.log('Teste res', res)
+
+        if (res.status == 1) {
+            console.log('Entrou aqui')
+            setIsAuthenticated()
+            navigate("/Home")
+        }
     }
+
+    useEffect(() => {
+        console.log('Teste auth 2', isAuthenticated)
+    }, [isAuthenticated])
 
     return (
         <C.Container>
