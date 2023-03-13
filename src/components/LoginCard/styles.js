@@ -41,8 +41,8 @@ export const Form = styled.div`
 
 export const Button = styled.button`
     width: 15em;
-    height: 3em;
-    padding: 5px 10px;
+    height: 4em;
+    padding: 5px 6em;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -65,5 +65,10 @@ export const LinkRedirect = styled.p`
     margin-left: 3px;
     color: #00B37E;
 `;
+
+export const Text = styled.p`
+    color: red;
+    text-align: center;
+`
 
 

@@ -1,34 +1,35 @@
 import Input from "../Input";
 import * as C from "./styles";
-import { Link, useNavigate} from "react-router-dom";
-import { useStore } from "../../store/auth";
+import { Oval } from 'react-loader-spinner';
+import { useAuthStore } from "../../store/auth";
 import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { LoginService } from '../../services/login';
+
 
 
 const LoginCard = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("")
-    const { isAuthenticated, setIsAuthenticated } = useStore();
+    const [loading, setLoading] = useState(false)
+    const { isAuthenticated, setIsAuthenticated, error, setError } = useAuthStore();
     const navigate = useNavigate();
 
     const LoginHandler = async () => {
+        setLoading(true)
         const res = await LoginService({ email: email, password: password })
 
-        console.log('Teste res', res)
-
-        if (res.status == 1) {
-            console.log('Entrou aqui')
+        if (res?.data?.status == 1) {
             setIsAuthenticated()
             navigate("/Home")
+            setLoading(false)
+            setError(false)
+        } else {
+            setError(true)
+            setLoading(false)
         }
     }
-
-    useEffect(() => {
-        console.log('Teste auth 2', isAuthenticated)
-    }, [isAuthenticated])
 
     return (
         <C.Container>
@@ -36,6 +37,15 @@ const LoginCard = () => {
                 <C.Header>
                     <C.Title>MoneyTrack</C.Title>
                 </C.Header>
+                {
+                    error
+                        ?
+                        <C.Text>
+                            Usuário ou senha incorretos, tente novamente!
+                        </C.Text>
+                        :
+                        null
+                }
                 <C.Form>
                     <Input
                         title={"Login"}
@@ -61,8 +71,26 @@ const LoginCard = () => {
                             </C.LinkRedirect>
                         </Link>
                     </C.Redirect>
-                    <C.Button onClick={() => LoginHandler()}>
-                        Entrar
+                    <C.Button disabled={loading} onClick={() => LoginHandler()}>
+                        {
+                            loading
+                                ?
+                                <Oval
+                                    height={25}
+                                    width={25}
+                                    color="#323238"
+                                    wrapperStyle={{}}
+                                    wrapperClass=""
+                                    visible={true}
+                                    ariaLabel='oval-loading'
+                                    secondaryColor="#4fa94d"
+                                    strokeWidth={2}
+                                    strokeWidthSecondary={2}
+
+                                />
+                                :
+                                "Entrar"
+                        }
                     </C.Button>
                 </C.Form>
             </C.Card>
