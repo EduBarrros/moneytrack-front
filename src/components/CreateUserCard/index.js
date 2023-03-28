@@ -1,13 +1,33 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../Input";
 import * as C from "./styles";
+import { useCreateUserStore } from "../../store/createUser";
+import { CreateUserService } from '../../services/createUser';
+import { Oval } from 'react-loader-spinner';
 
 const CreateUserCard = () => {
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
+    const { error, setError } = useCreateUserStore();
+    const navigate = useNavigate();
+
+    const CreateUserHandler = async () => {
+        setLoading(true)
+        const res = await CreateUserService({ name: name, email: email, password: password })
+
+        if (res?.data?.status == 1) {
+            navigate("/")
+            setLoading(false)
+            setError(false)
+        } else {
+            setError(true)
+            setLoading(false)
+        }
+    }
 
     return (
         <C.Container>
@@ -45,7 +65,27 @@ const CreateUserCard = () => {
                             </C.LinkRedirect>
                         </Link>
                     </C.Redirect>
-                    <C.Button>Cadastrar</C.Button>
+                    <C.Button disabled={loading} onClick={() => CreateUserHandler()}>
+                    {
+                            loading
+                                ?
+                                <Oval
+                                    height={25}
+                                    width={25}
+                                    color="#323238"
+                                    wrapperStyle={{}}
+                                    wrapperClass=""
+                                    visible={true}
+                                    ariaLabel='oval-loading'
+                                    secondaryColor="#4fa94d"
+                                    strokeWidth={2}
+                                    strokeWidthSecondary={2}
+
+                                />
+                                :
+                                "Cadastrar"
+                        }
+                    </C.Button>
                 </C.Form>
             </C.Card>
         </C.Container>
