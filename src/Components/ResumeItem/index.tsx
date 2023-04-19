@@ -12,7 +12,7 @@ const ResumeItem = ({ title, Icon, value, iconColor }: {title: string, Icon: Ico
                 <Icon color={iconColor}/>
             </C.Header>
             <C.Total>
-                {value}
+                R$ {parseFloat(value).toFixed(2)}
             </C.Total>
         </C.Container>
     );

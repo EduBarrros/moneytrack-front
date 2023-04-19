@@ -1,14 +1,8 @@
-import React from "react";
 import ListItem from "../ListItem";
 import * as C from "./style";
+import { Transaction } from "../../types/transactionTypes";
 
-const List = ({ itens, setItens }: {itens?: any, setItens?: any}) => {
-  const onDelete = ({ID}: {ID: any}) => {
-    const newArray = itens.filter(({transaction}: {transaction: any}) => transaction.id !== ID);
-    setItens(newArray);
-    localStorage.setItem("transactions", JSON.stringify(newArray));
-  };
-
+const List = ({ itens, setItens }: { itens?: any, setItens?: any }) => {
   return (
     <C.Table>
       <C.Thead>
@@ -22,9 +16,11 @@ const List = ({ itens, setItens }: {itens?: any, setItens?: any}) => {
         </C.Tr>
       </C.Thead>
       <C.Tbody>
-        {itens?.map(({item, index} : {item: any, index: any}) => (
-          <ListItem key={index} item={item} onDelete={onDelete} />
-        ))}
+        {
+          itens?.map((item: Transaction, index: number) => (
+            <ListItem key={index} item={item} onDelete={() => null} />
+          ))
+        }
       </C.Tbody>
     </C.Table>
   );

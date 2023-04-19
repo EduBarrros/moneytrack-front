@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div<{total: number}>`
     display: flex;
     flex-direction:column;
     align-items: center;
@@ -8,7 +8,7 @@ export const Container = styled.div`
     border-radius: 5px;
     padding: 5px 15px;
     width: 30%;
-    background-color:#00B37E;;
+    background-color: ${props => props.total > 0 ? '#00ff00' : '#ff0000'};
     color: #E1E1E6;
 
     @media (max-width: 750px){

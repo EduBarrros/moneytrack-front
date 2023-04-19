@@ -2,7 +2,7 @@ import React from "react";
 import List from "../List"
 import * as C from "./style";
 
-const Form = (props: {handleAdd: any, transactionsList: any, setTransactionsList: any}) => {
+const Form = (props: { handleAdd: any, transactionsList: any, setTransactionsList: any }) => {
 
     return (
         <>
@@ -11,7 +11,7 @@ const Form = (props: {handleAdd: any, transactionsList: any, setTransactionsList
                     <C.Label>
                         Descrição
                     </C.Label>
-                    <C.Input/>
+                    <C.Input />
                 </C.InputContent>
                 <C.InputContent>
                     <C.Label>
@@ -38,7 +38,7 @@ const Form = (props: {handleAdd: any, transactionsList: any, setTransactionsList
                 </C.RadioGroup>
                 <C.Button>Adicionar</C.Button>
             </C.Container>
-            <List/>
+            <List itens={props.transactionsList}/>
         </>
     )
 };

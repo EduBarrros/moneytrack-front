@@ -5,4 +5,6 @@ export const useAuthStore: any = create((set: any) => ({
   setIsAuthenticated: () => set(() => ({ isAuthenticated: true })),
   error: false,
   setError: (value: string) => set(() => ({ error: value })),
+  userId: '',
+  setUserId: (value: string) => set(() => ({ userId: value}))
 }));
