@@ -2,13 +2,7 @@ import React from "react";
 import List from "../List"
 import * as C from "./style";
 
-export type transaction = {
-    expense: string,
-    income: string,
-    amount: number
-};
-
-const Form = (props: {handleAdd: any, transaction: transaction, setTransaction: React.Dispatch<React.SetStateAction<transaction>>, transactionsList: any, setTransactionsList: any}) => {
+const Form = (props: {handleAdd: any, transactionsList: any, setTransactionsList: any}) => {
 
     return (
         <>
@@ -17,10 +11,7 @@ const Form = (props: {handleAdd: any, transaction: transaction, setTransaction: 
                     <C.Label>
                         Descrição
                     </C.Label>
-                    <C.Input
-                        value={props.transaction.expense}
-                        onChange={(e) => props.setTransaction({ ...props.transaction, expense: e.target.value })}
-                    />
+                    <C.Input/>
                 </C.InputContent>
                 <C.InputContent>
                     <C.Label>
@@ -28,8 +19,6 @@ const Form = (props: {handleAdd: any, transaction: transaction, setTransaction: 
                     </C.Label>
                     <C.Input
                         type="number"
-                        value={props.transaction.amount}
-                        onChange={(e) => props.setTransaction({ ...props.transaction, amount: Number(e.target.value) })}
                     />
                 </C.InputContent>
                 <C.RadioGroup>
@@ -47,7 +36,7 @@ const Form = (props: {handleAdd: any, transaction: transaction, setTransaction: 
                     />
                     <C.Label htmlFor="rExpenses">Saída</C.Label>
                 </C.RadioGroup>
-                <C.Button onClick={props.handleAdd}>Adicionar</C.Button>
+                <C.Button>Adicionar</C.Button>
             </C.Container>
             <List/>
         </>
