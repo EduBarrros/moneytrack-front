@@ -28,6 +28,7 @@ const Resume = ({ income, expense, total }: { income: any, expense: any, total: 
           Icon={FaDollarSign} 
           value={total} 
           iconColor={"#fff"}
+          total={total}
         />
           
       </C.Container>

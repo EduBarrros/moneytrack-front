@@ -10,7 +10,7 @@ const LoginCard = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false)
-    const { setIsAuthenticated, error, setError } = useAuthStore();
+    const { setIsAuthenticated, error, setError, setUserId} = useAuthStore();
     const navigate = useNavigate();
 
     const LoginHandler = async () => {
@@ -18,6 +18,7 @@ const LoginCard = () => {
         const res = await LoginService({ email: email, password: password })
 
         if (res?.data?.status === 1) {
+            setUserId(res?.data?.user?.id)
             setIsAuthenticated()
             navigate("/Home")
             setLoading(false)
