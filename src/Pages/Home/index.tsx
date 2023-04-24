@@ -4,12 +4,14 @@ import Form from "../../Components/Form"
 import GlobalStyle from "../../Components/Global/style";
 import Header from "../../Components/Header";
 import { useAuthStore } from "../../Store/auth";
+import { useCreateTransactionStore } from "../../Store/createTransaction";
 import { GetTransactions } from "../../Services/HomeServices/indes";
 import { Transaction } from "../../types/transactionTypes";
 
 export const Home = () => {
 
   const { userId } = useAuthStore();
+  const { successReload, setSuccessReload } = useCreateTransactionStore();
   const [transactions, setTransactions] = React.useState<any>([]);
   const [transactionInputSum, setTransactionInputSum] = React.useState<any>([])
   const [transactionOutputSum, setTransactionOutputSum] = React.useState<any>([])
@@ -36,15 +38,21 @@ export const Home = () => {
     }
   }
 
-  React.useEffect(() => {
-    const FetchHomeTransaction = async () => {
-      const response = await GetTransactions(userId);
+  const FetchHomeTransaction = async () => {
+    const response = await GetTransactions(userId);
 
-      if (response?.status === 1) {
-        setTransactions(response?.transactions)
-      }
+    if (response?.status === 1) {
+      setTransactions(response?.transactions)
+      setSuccessReload(false)
     }
+  }
 
+  React.useEffect(() => {
+    console.log('Teste 1234', successReload)
+    FetchHomeTransaction()
+  }, [successReload])
+
+  React.useEffect(() => {
     FetchHomeTransaction()
   }, [])
 
