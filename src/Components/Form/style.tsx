@@ -16,35 +16,6 @@ export const Container = styled.div`
     }
 `;
 
-export const InputContent = styled.div`
-    display: flex;
-    flex-direction: column;
-`;
-
-export const Label = styled.label`
-    color: #E1E1E6;
-`;
-
-export const Input = styled.input`
-    outline: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-size: 15px;
-    border: 1px solid #ccc;
-`;
-
-export const RadioGroup = styled.div`
-    display: flex;
-    align-items: center;
-
-    input{
-        margin-left: 20px;
-        margin-right: 5px;
-        accent-color: #00B37E;
-        margin-top: 0;
-    }
-`;
-
 export const Button = styled.button`
     padding: 5px 10px;
     border: none;
@@ -52,4 +23,25 @@ export const Button = styled.button`
     cursor: pointer;
     color: white;
     background-color: #00B37E;
+`
+
+export const SubContainer = styled.div`
+
+`
+
+export const Title = styled.h2`
+    color: white;
+`
+
+export const Input = styled.input``
+
+export const Text = styled.p`
+    color: white;
+    margin-left: 10px;
+`
+
+export const RowContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
 `
