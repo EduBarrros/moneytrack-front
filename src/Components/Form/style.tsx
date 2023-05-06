@@ -29,15 +29,32 @@ export const SubContainer = styled.div`
 
 `
 
+export const SubContainerSwitch = styled.div`
+    display: flex;
+    flex-direction: 'row';
+    justify-content: center;
+    align-items: center;
+`
+
 export const Title = styled.h2`
     color: white;
 `
 
-export const Input = styled.input``
+export const Input = styled.input`
+    border-radius: 20px;
+    height: 40px;
+    border-style: none;
+    padding-left: 15px;
+    font-weight: bold;
+    color: '#000000';
+`
 
-export const Text = styled.p`
+export const Text = styled.p<{ml?: string, mr?: string, color?: string}>`
     color: white;
-    margin-left: 10px;
+    margin-right: ${props => props.mr ? props.mr : '0px'};
+    margin-left: ${props => props.ml ? props.ml : '0px'};
+    font-weight: bold;
+    color: ${props => props.color ? props.color : ''};
 `
 
 export const RowContainer = styled.div`

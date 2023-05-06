@@ -4,5 +4,7 @@ export const useCreateTransactionStore: any = create((set: any) => ({
     error: false,
     setError: (value: any) => set(() => ({ error: value })),
     successReload: false,
-    setSuccessReload: (value: any) => set(() => ({ successReload: value }))
+    setSuccessReload: (value: any) => set(() => ({ successReload: value })),
+    loading: false,
+    setLoading: (value: any) => set(() => ({ loading: value })),
 }));

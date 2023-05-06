@@ -16,7 +16,6 @@ type CreateTransactionResponse = {
 }
 
 export const CreateTransactionService = async (description: string, userId: string, type: number, value: number) => {
-    console.log('Debug', description, userId, type, value)
     try {
         const response = await axios.post<CreateTransactionResponse>(`${BASE_URL}/CreateTransaction`, {
             value: value,

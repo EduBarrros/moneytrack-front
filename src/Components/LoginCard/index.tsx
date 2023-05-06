@@ -46,7 +46,7 @@ const LoginCard = () => {
                 }
                 <S.Form>
                     <Input
-                        title={"Login"}
+                        title={"Email"}
                         placeHolder={'Digite seu email'}
                         type={"email"}
                         value={email}

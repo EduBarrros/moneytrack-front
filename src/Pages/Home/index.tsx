@@ -42,13 +42,12 @@ export const Home = () => {
     const response = await GetTransactions(userId);
 
     if (response?.status === 1) {
-      setTransactions(response?.transactions)
+      setTransactions(response?.transactions.reverse())
       setSuccessReload(false)
     }
   }
 
   React.useEffect(() => {
-    console.log('Teste 1234', successReload)
     FetchHomeTransaction()
   }, [successReload])
 

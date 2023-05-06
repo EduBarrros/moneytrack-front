@@ -6,14 +6,15 @@ import { useCreateTransactionStore } from "../../Store/createTransaction";
 import { CreateTransactionService } from "../../Services/CreateTransacion";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Switch from "react-switch";
 
 const Form = (props: { handleAdd: any, transactionsList: any, setTransactionsList: any }) => {
 
     const [descricao, setDescricao] = React.useState('')
-    const [valor, setValor] = React.useState(0)
+    const [valor, setValor] = React.useState('')
     const [type, setType] = React.useState(0)
     const { userId } = useAuthStore();
-    const { successReload, setSuccessReload } = useCreateTransactionStore();
+    const { successReload, setSuccessReload, loading, setLoading } = useCreateTransactionStore();
 
     const handleValue = (event: any) => {
         setValor(event.target.value);
@@ -24,11 +25,13 @@ const Form = (props: { handleAdd: any, transactionsList: any, setTransactionsLis
     }
 
     const handleSubimit = async () => {
+        setLoading(true)
         const response = await CreateTransactionService(descricao, userId, type, parseInt(valor.toString()))
-        if(response?.data?.status === 1){
+        if (response?.data?.status === 1) {
             toast.success("Transação cadastrada com Sucesso")
             setSuccessReload(true)
         }
+        setLoading(false)
     }
 
     return (
@@ -36,47 +39,44 @@ const Form = (props: { handleAdd: any, transactionsList: any, setTransactionsLis
             <ToastContainer />
             <C.Container>
                 <C.SubContainer>
-                    <C.Title>
-                        Valor
-                    </C.Title>
                     <C.Input
                         type="text"
                         value={valor}
                         onChange={handleValue}
+                        placeholder="R$ 0,00"
                     />
                 </C.SubContainer>
                 <C.SubContainer>
-                    <C.Title>
-                        Descrição
-                    </C.Title>
                     <C.Input
                         type="text"
                         value={descricao}
                         onChange={handleDescricao}
+                        placeholder="Descrição"
                     />
                 </C.SubContainer>
-                <C.SubContainer>
-                    <C.RowContainer>
-                        <C.Input
-                            type="checkbox"
-                            checked={type === 0}
-                            onClick={() => setType(0)}
-                        />
-                        <C.Text>
-                            Entrada
-                        </C.Text>
-                    </C.RowContainer>
-                    <C.RowContainer>
-                        <C.Input
-                            type="checkbox"
-                            checked={type === 1}
-                            onClick={() => setType(1)}
-                        />
-                        <C.Text>
-                            Saida
-                        </C.Text>
-                    </C.RowContainer>
-                </C.SubContainer>
+                <C.SubContainerSwitch>
+                    <C.Text
+                        mr={'10px'}
+                        color={type === 0 ? '#00B37E' : ''}
+                    >
+                        Entrada
+                    </C.Text>
+
+                    <Switch
+                        onChange={() => setType(type === 0 ? 1 : 0)}
+                        checked={type === 1}
+                        offColor="#00B37E"
+                        onColor="#FF0000"
+                        uncheckedIcon={false}
+                        checkedIcon={false}
+                    />
+                    <C.Text
+                        ml={'10px'}
+                        color={type === 1 ? '#FF0000' : ''}
+                    >
+                        Saida
+                    </C.Text>
+                </C.SubContainerSwitch>
                 <C.Button
                     onClick={handleSubimit}
                 >
