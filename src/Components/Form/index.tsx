@@ -14,7 +14,7 @@ const Form = (props: { handleAdd: any, transactionsList: any, setTransactionsLis
     const [valor, setValor] = React.useState('')
     const [type, setType] = React.useState(0)
     const { userId } = useAuthStore();
-    const { successReload, setSuccessReload, loading, setLoading } = useCreateTransactionStore();
+    const { successDeleteReload, setSuccessReload, loading, setLoading } = useCreateTransactionStore();
 
     const handleValue = (event: any) => {
         setValor(event.target.value);
@@ -30,6 +30,8 @@ const Form = (props: { handleAdd: any, transactionsList: any, setTransactionsLis
         if (response?.data?.status === 1) {
             toast.success("Transação cadastrada com Sucesso")
             setSuccessReload(true)
+            setValor('')
+            setDescricao('')
         }
         setLoading(false)
     }

@@ -4,10 +4,12 @@ import { IconType } from "react-icons/lib";
 import { useCreateTransactionStore } from "../../Store/createTransaction";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { useDeleteTransactionStore } from "../../Store/deleteTransaction";
 
 const ResumeItemGreen = ({ title, Icon, value, iconColor, total }: { title: string, Icon: IconType, value: string, iconColor: string, total: number }) => {
 
     const { successReload, setSuccessReload, loading, setLoading } = useCreateTransactionStore();
+    const { loadingDeleting } = useDeleteTransactionStore();
     return (
         <C.Container
             total={total}
@@ -19,7 +21,7 @@ const ResumeItemGreen = ({ title, Icon, value, iconColor, total }: { title: stri
                 <Icon color={iconColor} />
             </C.Header>
             {
-                loading
+                loading || loadingDeleting
                     ?
                     <Skeleton
                         height={40}
