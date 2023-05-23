@@ -7,7 +7,8 @@ import { CreateTransactionService } from "../../Services/CreateTransacion";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Switch from "react-switch";
-import { ReactSVG } from "react-svg";
+import { EmptyAnimation } from "../EmptyAnimation";
+import { formatCurrency } from "../../helpers/moneyMask";
 
 const Form = (props: { handleAdd: any, transactionsList: any, setTransactionsList: any }) => {
 
@@ -92,7 +93,18 @@ const Form = (props: { handleAdd: any, transactionsList: any, setTransactionsLis
                     Adicionar
                 </C.Button>
             </C.Container>
-            <List itens={props.transactionsList} />
+            {
+                props.transactionsList.length <= 0
+                    ?
+                    <>
+                        <EmptyAnimation />
+                        <C.EmptyText>
+                            Parece que você não cadastrou nenhuma transação ainda.
+                        </C.EmptyText>
+                    </>
+                    :
+                    <List itens={props.transactionsList} />
+            }
         </>
     )
 };

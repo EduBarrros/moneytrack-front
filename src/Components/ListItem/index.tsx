@@ -33,7 +33,7 @@ const ListItem = ({ item, onDelete }: { item: Transaction, onDelete: any }) => {
       <ToastContainer />
       <C.Tr>
         <C.Td>{item?.description}</C.Td>
-        <C.Td>{item?.value}</C.Td>
+        <C.Td>R$ {item?.value.toFixed(2).replace('.',',')}</C.Td>
         <C.Td alignCenter>
           {item?.type ? (
             <FaRegArrowAltCircleDown color="red" />

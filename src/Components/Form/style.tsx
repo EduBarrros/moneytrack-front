@@ -68,3 +68,8 @@ export const EmptyImage = styled.img`
     height: 150px;
     width: 150px;
 `
+
+export const EmptyText = styled.h2`
+    color: #fff;
+    text-align: center;
+`
