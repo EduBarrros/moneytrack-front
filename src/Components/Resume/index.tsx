@@ -8,7 +8,7 @@ import {
     FaDollarSign,
 } from "react-icons/fa";
 
-const Resume = ({ income, expense, total }: { income: any, expense: any, total: any }) => {
+const Resume = ({ income, expense, total, empty}: { income: any, expense: any, total: any, empty: boolean }) => {
     return (
       <C.Container>
         <ResumeItem
@@ -16,19 +16,22 @@ const Resume = ({ income, expense, total }: { income: any, expense: any, total: 
           Icon={FaRegArrowAltCircleUp}
           value={income}
           iconColor={"#00B37E"}
+          empty={empty}
         />
         <ResumeItem
           title="Saídas"
           Icon={FaRegArrowAltCircleDown}
           value={expense}
           iconColor={"#F75A68"}
+          empty={empty}
         />
         <ResumeItemGreen
           title="Total" 
           Icon={FaDollarSign} 
-          value={total} 
+          value={empty ? 0 : total} 
           iconColor={"#fff"}
           total={total}
+          empty={empty}
         />
           
       </C.Container>

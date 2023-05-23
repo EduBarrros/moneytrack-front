@@ -23,6 +23,7 @@ export const Button = styled.button`
     cursor: pointer;
     color: white;
     background-color: #00B37E;
+    font-weight: bold;
 `
 
 export const SubContainer = styled.div`
@@ -61,4 +62,9 @@ export const RowContainer = styled.div`
     display: flex;
     flex-direction: row;
     margin-top: 10px;
+`
+
+export const EmptyImage = styled.img`
+    height: 150px;
+    width: 150px;
 `

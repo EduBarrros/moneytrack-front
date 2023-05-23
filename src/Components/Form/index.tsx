@@ -7,6 +7,7 @@ import { CreateTransactionService } from "../../Services/CreateTransacion";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Switch from "react-switch";
+import { ReactSVG } from "react-svg";
 
 const Form = (props: { handleAdd: any, transactionsList: any, setTransactionsList: any }) => {
 
@@ -25,8 +26,14 @@ const Form = (props: { handleAdd: any, transactionsList: any, setTransactionsLis
     }
 
     const handleSubimit = async () => {
+        console.log('valor', valor)
+        if (descricao === '' || valor === '') {
+            toast.warning("Preencha todos os campos da transação.")
+            return
+        }
+
         setLoading(true)
-        const response = await CreateTransactionService(descricao, userId, type, parseInt(valor.toString()))
+        const response = await CreateTransactionService(descricao, userId, type, parseFloat(valor.toString()))
         if (response?.data?.status === 1) {
             toast.success("Transação cadastrada com Sucesso")
             setSuccessReload(true)

@@ -8,7 +8,7 @@ export const Container = styled.div<{total: number}>`
     border-radius: 5px;
     padding: 5px 15px;
     width: 30%;
-    background-color: ${props => props.total > 0 ? '#00B37E' : '#ff0000'};
+    background-color: ${props => props.total >= 0 ? '#00B37E' : '#ff0000'};
     color: #E1E1E6;
 
     @media (max-width: 750px){

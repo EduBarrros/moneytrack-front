@@ -21,6 +21,7 @@
     "react-loading-skeleton": "^3.3.0",
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
+    "react-svg": "^16.1.13",
     "react-switch": "^7.0.0",
     "react-toastify": "^9.1.2",
     "styled-components": "^5.3.9",

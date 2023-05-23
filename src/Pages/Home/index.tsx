@@ -13,7 +13,7 @@ export const Home = () => {
 
   const { userId } = useAuthStore();
   const { successReload, setSuccessReload } = useCreateTransactionStore();
-  const { successDeleteReload } = useDeleteTransactionStore();
+  const { successDeleteReload} = useDeleteTransactionStore();
   const [transactions, setTransactions] = React.useState<any>([]);
   const [transactionInputSum, setTransactionInputSum] = React.useState<any>([])
   const [transactionOutputSum, setTransactionOutputSum] = React.useState<any>([])
@@ -42,7 +42,7 @@ export const Home = () => {
 
   const FetchHomeTransaction = async () => {
     const response = await GetTransactions(userId);
-
+    console.log('Teste res', response)
     if (response?.status === 1) {
       setTransactions(response?.transactions.reverse())
       setSuccessReload(false)
@@ -54,7 +54,7 @@ export const Home = () => {
   }, [successReload])
 
   React.useEffect(() => {
-    if(successDeleteReload) FetchHomeTransaction()
+    if (successDeleteReload) FetchHomeTransaction()
   }, [successDeleteReload])
 
   React.useEffect(() => {
@@ -68,7 +68,12 @@ export const Home = () => {
   return (
     <>
       <Header />
-      <Resume income={transactionInputSum} expense={transactionOutputSum} total={transactionInputSum - transactionOutputSum} />
+      <Resume
+        income={transactionInputSum}
+        expense={transactionOutputSum}
+        total={transactionInputSum - transactionOutputSum}
+        empty={transactions.length <= 0 ? true : false}
+      />
       <Form
         handleAdd={() => null}
         transactionsList={transactions}

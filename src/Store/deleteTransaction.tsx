@@ -7,4 +7,6 @@ export const useDeleteTransactionStore: any = create((set: any) => ({
     setSuccessDeleteReload: (value: any) => set(() => ({ successDeleteReload: value })),
     loadingDeleting: false,
     setLoadingDeleting: (value: any) => set(() => ({ loadingDeleting: value })),
+    showDeleteModal: false,
+    setShowDeleteModal: (value: any) => set(() => ({  showDeleteModal: value })),
 }));
