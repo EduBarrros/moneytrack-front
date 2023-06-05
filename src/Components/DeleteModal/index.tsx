@@ -7,7 +7,7 @@ type ModalProps = {
     onFunction: () => void
 }
 
-export const Modal = ({ isOpen, onClose, onFunction}: ModalProps) => (
+export const DeleteModal = ({ isOpen, onClose, onFunction}: ModalProps) => (
     isOpen
         ?
         <>

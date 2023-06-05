@@ -8,12 +8,14 @@ import { useCreateTransactionStore } from "../../Store/createTransaction";
 import { GetTransactions } from "../../Services/HomeServices/indes";
 import { Transaction } from "../../types/transactionTypes";
 import { useDeleteTransactionStore } from "../../Store/deleteTransaction";
+import { useUpdateTransactionStore } from "../../Store/updateTransaction";
 
 export const Home = () => {
 
   const { userId } = useAuthStore();
   const { successReload, setSuccessReload } = useCreateTransactionStore();
-  const { successDeleteReload} = useDeleteTransactionStore();
+  const { successDeleteReload } = useDeleteTransactionStore();
+  const { successUpdateReload } = useUpdateTransactionStore();
   const [transactions, setTransactions] = React.useState<any>([]);
   const [transactionInputSum, setTransactionInputSum] = React.useState<any>([])
   const [transactionOutputSum, setTransactionOutputSum] = React.useState<any>([])
@@ -54,8 +56,8 @@ export const Home = () => {
   }, [successReload])
 
   React.useEffect(() => {
-    if (successDeleteReload) FetchHomeTransaction()
-  }, [successDeleteReload])
+    if (successDeleteReload || successUpdateReload) FetchHomeTransaction()
+  }, [successDeleteReload, successUpdateReload])
 
   React.useEffect(() => {
     FetchHomeTransaction()
